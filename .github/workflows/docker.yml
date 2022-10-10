@@ -13,8 +13,8 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - name: Retrieve current git tag
         run: |
-          echo $(shell git describe --tags --always)
-          echo "GIT_TAG=$(shell git describe --tags --always)" >> $GITHUB_ENV
+          echo $(git describe --tags --always)
+          echo "GIT_TAG=$(git describe --tags --always)" >> $GITHUB_ENV
       - name: Build docker image
         run: |
           docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8 -f "./Dockerfile" --push \
